@@ -1,22 +1,14 @@
 import { TETROMINOS } from '@/utils/consts'
-
-const PIECE_COLOR_SELECTOR = {
-  [TETROMINOS[0]]: 'clearPiece',
-  [TETROMINOS.I]: 'iPiece',
-  [TETROMINOS.J]: 'jPiece',
-  [TETROMINOS.L]: 'lPiece',
-  [TETROMINOS.O]: 'oPiece',
-  [TETROMINOS.S]: 'sPiece',
-  [TETROMINOS.T]: 'tPiece',
-  [TETROMINOS.Z]: 'zPiece'
-}
+import { StyledCell } from './styles/StyledCell'
 
 const Cell = ({ type }) => {
   return (
-    <div
-      className={` w-auto ${PIECE_COLOR_SELECTOR[TETROMINOS[0]]}`}
-    >cell
-    </div>
+    <StyledCell
+      type='L'
+      color={TETROMINOS.L.color}
+    >
+      cell
+    </StyledCell>
   )
 }
 
