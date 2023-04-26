@@ -1,3 +1,4 @@
+import React from 'react'
 import { TETROMINOS } from '@/utils/consts'
 import { StyledCell } from './styles/StyledCell'
 
@@ -10,4 +11,4 @@ const Cell = ({ type }) => {
   )
 }
 
-export default Cell
+export default React.memo(Cell)
