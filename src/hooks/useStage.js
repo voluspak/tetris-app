@@ -3,8 +3,23 @@ import { createStage } from '@/utils/gameHelpers'
 
 export const useStage = ({ player, resetPlayer }) => {
   const [stage, setStage] = useState(createStage())
+  const [rowsCleared, setRowsCleared] = useState(0)
 
   useEffect(() => {
+    setRowsCleared(0)
+
+    const sweepRows = newStage => {
+      return newStage.reduce((acc, row) => {
+        if (row.findIndex(cell => cell[0] === 0) === -1) {
+          setRowsCleared(prev => prev + 1)
+          acc.unshift(new Array(newStage[0].length).fill([0, 'clear']))
+          return acc
+        }
+        acc.push(row)
+        return acc
+      }, [])
+    }
+
     const updateStage = prevStage => {
       // flush the stage first
       const newStage = prevStage.map(row =>
@@ -17,31 +32,23 @@ export const useStage = ({ player, resetPlayer }) => {
           if (value !== 0) {
             const posX = x + player.position.x
             const posY = y + player.position.y
-            if (
-              posY < stage.length &&
-              posX < stage[0].length &&
-              posY >= 0 &&
-              posX >= 0
-            ) {
-              newStage[posY][posX] = [
-                value,
-                `${player.collided ? 'merged' : 'clear'}`
-              ]
-            }
+            newStage[posY][posX] = [
+              value,
+              `${player.collided ? 'merged' : 'clear'}`
+            ]
           }
         })
       })
-
       if (player.collided) {
         resetPlayer()
+        return sweepRows(newStage)
       }
 
       return newStage
     }
 
     setStage(prev => updateStage(prev))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [player.collided, player.piece, player.position, resetPlayer])
+  }, [player, resetPlayer])
 
-  return { stage, setStage }
+  return { stage, setStage, rowsCleared }
 }
