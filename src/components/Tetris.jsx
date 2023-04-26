@@ -22,9 +22,9 @@ const Tetris = () => {
   const { stage, setStage, rowsCleared } = useStage({ player, resetPlayer })
   const { score, setScore, rows, setRows, level, setLevel } = useGameStatus({ rowsCleared })
 
-  const movePlayer = direction => {
-    if (!checkCollision(player, stage, { x: direction, y: 0 })) {
-      updatePlayerPosition({ x: direction, y: 0 })
+  const movePlayer = (movement, dir = '+') => {
+    if (!checkCollision(player, stage, { x: Number(dir + 1), y: 0 })) {
+      updatePlayerPosition({ x: Number(dir + movement), y: 0 })
     }
   }
 
@@ -47,7 +47,7 @@ const Tetris = () => {
     }
 
     if (!checkCollision(player, stage, { x: 0, y: 1 })) {
-      updatePlayerPosition({ x: 0, y: 1, collided: false })
+      updatePlayerPosition({ x: 0, y: 0.5, collided: false })
     } else {
       if (player.position.y < 1) {
         console.log('Game over!!!')
@@ -73,10 +73,10 @@ const Tetris = () => {
     if (gameOver) return
 
     if (key === 'ArrowLeft') {
-      movePlayer(-1)
+      movePlayer(0.5, '-')
     }
     if (key === 'ArrowRight') {
-      movePlayer(1)
+      movePlayer(0.5)
     }
     if (key === 'ArrowDown') {
       dropPlayer()
