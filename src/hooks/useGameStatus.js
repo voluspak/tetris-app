@@ -1,3 +1,5 @@
+import { gameOverConfetti } from '@/utils/confettiSetting'
+import confetti from 'canvas-confetti'
 import { useState, useEffect, useCallback } from 'react'
 
 export const useGameStatus = ({ rowsCleared }) => {
@@ -26,11 +28,15 @@ export const useGameStatus = ({ rowsCleared }) => {
   const increaseSpeed = () => setDropTime(1000 / (level + 1) + 200)
 
   const increaseDificulty = () => {
+    confetti()
+
     setLevel(prev => prev + 1)
     setDropTime(1000 / (level + 1) + 200)
   }
 
   const finishGame = () => {
+    gameOverConfetti()
+
     setGameOver(true)
     setDropTime(null)
   }
