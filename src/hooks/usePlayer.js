@@ -4,7 +4,7 @@ import { STAGE_WIDTH, checkCollision } from '@/utils/gameHelpers'
 
 export const usePlayer = () => {
   const [player, setPlayer] = useState({
-    position: { x: 0, y: 0 },
+    position: { x: 0, y: 1 },
     piece: TETROMINOS[0].shape,
     collided: false
   })
@@ -27,7 +27,7 @@ export const usePlayer = () => {
       clonedPlayer.position.x += offset
       offset = -(offset + (offset > 0 ? 1 : -1))
 
-      if (offset > clonedPlayer.piece[0].length) {
+      if (offset > clonedPlayer.piece.length) {
         rotate(clonedPlayer.piece, -dir)
         clonedPlayer.position.x = position
         return
@@ -53,7 +53,7 @@ export const usePlayer = () => {
     setPlayer({
       position: {
         x: STAGE_WIDTH / 2 - 2,
-        y: 0
+        y: 1
       },
       piece: TETROMINOS[randomTetrominos()].shape,
       collided: false

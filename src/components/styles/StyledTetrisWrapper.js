@@ -2,21 +2,25 @@ import styled from 'styled-components'
 
 export const StyledTetrisWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: #1E1E1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const StyledTetris = styled.div`
   display: flex;
-  align-items: flex-start;
-  padding: 40px;
-  margin: 0 auto;
-  max-width: 900px;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  width: 80%;
+  outline: auto;
 
   aside {
-    width: 100%;
-    max-width: 200px;
+    align-self: flex-start;
+    outline: auto;
     display: block;
-    padding: 0 200px;
   }
 `
