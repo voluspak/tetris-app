@@ -11,8 +11,8 @@ export const StyledStage = styled.div`
     1fr
   );
   gap: 1px;
-  border: 2px solid #333;
+  border: ${(props) => props.theme.stageBorder};
   min-width: 10rem;
   width: 25%;
-  background-color: #111;
+  background-color: ${(props) => props.theme.stageBackgroundColor};
 `

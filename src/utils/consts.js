@@ -66,3 +66,35 @@ export const randomTetrominos = () => {
   const randomTetromino = tetrominos[Math.floor(Math.random() * tetrominos.length)]
   return randomTetromino
 }
+
+export const darkTheme = {
+  body: '#1E1E1E',
+
+  buttonTextColor: '#fff',
+  buttonBackgroundColor: '#333',
+
+  stageBackgroundColor: '#111',
+  stageBorder: '2px solid #333',
+
+  displayTextColor: '#999',
+  displayBackgroundColor: '#000',
+  displayBorder: '4px solid #333',
+
+  icons: '#F7F7F7'
+}
+
+export const lightTheme = {
+  body: '#F7F7F7',
+
+  buttonTextColor: '#333',
+  buttonBackgroundColor: '#ccc',
+
+  stageBackgroundColor: '#333',
+  stageBorder: '2px solid #ccc',
+
+  displayTextColor: '#333',
+  displayBackgroundColor: '#F2F2F2',
+  displayBorder: '4px solid #ccc',
+
+  icons: '#1E1E1E'
+}

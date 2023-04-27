@@ -4,7 +4,7 @@ import { STAGE_WIDTH, checkCollision } from '@/utils/gameHelpers'
 
 export const usePlayer = () => {
   const [player, setPlayer] = useState({
-    position: { x: 0, y: 1 },
+    position: { x: 0, y: 0 },
     piece: TETROMINOS[0].shape,
     collided: false
   })
@@ -53,7 +53,7 @@ export const usePlayer = () => {
     setPlayer({
       position: {
         x: STAGE_WIDTH / 2 - 2,
-        y: 1
+        y: 0
       },
       piece: TETROMINOS[randomTetrominos()].shape,
       collided: false

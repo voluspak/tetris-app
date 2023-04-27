@@ -7,13 +7,13 @@ export const StyledDisplay = styled.div`
   justify-content: center;
   margin: 0 0 20px 0;
 
-  border: 4px solid #333;
+  border: ${(props) => props.theme.displayBorder};
   min-height: 30px;
   min-width: 8rem;
   width: auto;
   border-radius: 20px;
-  color: ${props => (props.gameOver ? 'red' : '#999')};
-  background-color: #000;
+  color: ${props => (props.gameOver ? 'red' : props.theme.displayTextColor)};
+  background-color: ${(props) => props.theme.displayBackgroundColor};
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
 `
